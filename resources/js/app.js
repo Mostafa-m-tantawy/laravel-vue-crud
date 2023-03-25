@@ -68,8 +68,3 @@ const app = new Vue({
     router: routes,
     vuetify,
 });
-
-// routes.beforeEach((to, from, next) => {
-//     document.title  = "Voler - " + to.meta
-//     next()
-// })
