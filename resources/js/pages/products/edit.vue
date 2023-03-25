@@ -111,7 +111,7 @@
             },
 
             UpdateForm() {
-                let axiosConfig = {
+                const axiosConfig = {
                     headers: {
                         'Content-Type': 'multipart/form-data'
                     }
@@ -122,7 +122,7 @@
                     formDataa.append(key, data[key]);
                 }
 
-                axios.put('/api/products/'+ this.id,data).then((response) => {
+                axios.post('/api/products/update/'+ this.id, formDataa,axiosConfig).then((response) => {
                     if (response.data.status) {
                         this.$noty.success(response.data.messege);
                         this.$router.push({

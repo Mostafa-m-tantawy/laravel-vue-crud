@@ -24,6 +24,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // dashboard route
 Route::get('/dashboard', [DashboardController::class,'index']);
 // pages routes
-Route::resource('products', ProductController::class);
+Route::post('/products/update/{id}', [ProductController::class,'update']);
+Route::resource('products', ProductController::class)->except('update');
 Route::resource('categories', CategoryController::class);
 Route::post('/get-categories', [ProductController::class,'getCategories']);
