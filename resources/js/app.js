@@ -13,6 +13,7 @@ import routes from './route/routes.js'
 // vuetify
 import vuetify from './plugins/vuetify.js'
 
+
 // data table
 import 'jquery';
 import 'jszip';
@@ -57,9 +58,7 @@ const app = new Vue({
         text: 'laravel + vue js',
     },
     methods: {
-        judul(){
-            return this.text
-        },
+
         getroot()
         {
             return this.$route.meta
@@ -67,4 +66,6 @@ const app = new Vue({
     },
     router: routes,
     vuetify,
+
+
 });

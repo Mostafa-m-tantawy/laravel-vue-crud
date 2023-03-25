@@ -4,7 +4,7 @@
             <!-- button atas -->
             <template>
                 <v-toolbar flat>
-                    <v-toolbar-title>Data Siswa</v-toolbar-title>
+                    <v-toolbar-title>Products</v-toolbar-title>
                     <v-divider class="mx-4" inset vertical></v-divider>
                     <v-spacer></v-spacer>
                     <v-btn color="primary" @click.prevent="tambahRoute()" dark class="mb-2">
@@ -35,10 +35,10 @@
                 </template>
                 <!-- end -->
             </v-data-table>
+
         </div>
 
     </div>
-
 </template>
 
 

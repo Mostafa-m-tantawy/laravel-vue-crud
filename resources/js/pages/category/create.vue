@@ -8,7 +8,7 @@
             <div class="row">
 
                 <div class="col-md-12">
-                    <form @submit.prevent="StoreForm()" action="/siswa" method="POST">
+                    <form @submit.prevent="StoreForm()" action="/categories" method="POST">
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" class="form-control " id="name" placeholder="name"

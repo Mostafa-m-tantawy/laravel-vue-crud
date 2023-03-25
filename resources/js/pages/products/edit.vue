@@ -8,7 +8,7 @@
             <div class="row">
 
                 <div class="col-md-12">
-                    <form @submit.prevent="StoreForm()" action="/products" method="POST">
+                    <form @submit.prevent="UpdateForm()" action="/products" method="POST"  enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="basicInput">Name</label>
                             <input type="text" class="form-control " id="basicInput" placeholder="Name"
@@ -17,7 +17,11 @@
                                 {{ erorr.name[0]  }}
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label>Image</label>
+                            <input type="file" class="form-control" ref="file"  v-on:change="onChangeFileUpload()">
 
+                        </div>
                         <div class="form-group">
                             <label>Rating</label>
                             <input type="number" class="form-control"  placeholder="Rating"
@@ -72,11 +76,12 @@
         data() {
             return {
                 form: {
-                    name: ' ',
-                    rating: ' ',
-                    price: ' ',
-                    category_id: ' ',
-                    description: ' ',
+                    name: '',
+                    rating:0,
+                    price:0,
+                    category_id: '',
+                    image: '',
+                    description: '',
                 },
                 option: [],
                 erorr: [],
@@ -84,6 +89,9 @@
             }
         },
         methods: {
+            onChangeFileUpload() {
+                this.form.image = this.$refs.file.files[0];
+            },
             getCategories() {
                 axios.post('/api/get-categories', this.data).then((response) => {
                     this.option = response.data;
@@ -97,12 +105,24 @@
                         rating: response.data.rating,
                         price: response.data.price,
                         description: response.data.description,
+                        image: '',
                     }
                 });
             },
 
-            StoreForm() {
-                axios.put('/api/products/'+ this.id, this.form).then((response) => {
+            UpdateForm() {
+                let axiosConfig = {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
+                };
+                let formDataa = new FormData();
+                let data= this.form
+                for ( var key in data) {
+                    formDataa.append(key, data[key]);
+                }
+
+                axios.put('/api/products/'+ this.id,data).then((response) => {
                     if (response.data.status) {
                         this.$noty.success(response.data.messege);
                         this.$router.push({

@@ -5,11 +5,11 @@
                 <div class="card-body p-0">
                     <div class="d-flex flex-column">
                         <div class="px-3 py-3 d-flex justify-content-between">
-                            <h3 class="card-title"> <i data-feather="user" style="width: 30px; height: 30px"></i> Siswa
+                            <h3 class="card-title"> <i data-feather="user" style="width: 30px; height: 30px"></i> Products
                             </h3>
                         </div>
                         <div class="card-right ml-3 mb-4">
-                            <p>{{ data.siswa }}</p>
+                            <p>{{ data.products }}</p>
                         </div>
                     </div>
                 </div>
@@ -20,11 +20,11 @@
                 <div class="card-body p-0">
                     <div class="d-flex flex-column">
                         <div class="px-3 py-3 d-flex justify-content-between">
-                            <h3 class="card-title"> <i data-feather="home" style="width: 30px; height: 30px"></i> Kelas
+                            <h3 class="card-title"> <i data-feather="home" style="width: 30px; height: 30px"></i> Categories
                             </h3>
                         </div>
                         <div class="card-right ml-3 mb-4">
-                            <p>{{ data.kelas }} </p>
+                            <p>{{ data.categories }} </p>
                         </div>
                     </div>
                 </div>
@@ -38,8 +38,8 @@
         data() {
             return {
                 data: {
-                    siswa: '0',
-                    kelas: '0',
+                    products: '0',
+                    categories: '0',
                 }
             }
         },
@@ -47,8 +47,8 @@
             getAllData() {
                 axios.get('/api/dashboard').then((response) => {
                     this.data = {
-                        siswa: response.data.siswa,
-                        kelas: response.data.kelas,
+                        products: response.data.products,
+                        categories: response.data.categories,
                     }
                 })
             }
